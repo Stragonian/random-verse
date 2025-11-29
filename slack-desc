@@ -1,0 +1,17 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+            |-----handy-ruler------------------------------------------------------|
+random-verse: random-verse ( Randon Bible Verse Generator )
+random-verse:
+random-verse: random-verse is a simple random bible verse generator that produces
+random-verse: a single verse from the scriptures.
+random-verse:
+random-verse:
+random-verse:
+random-verse: By - Jerry Nettrouer II <j2@inpito.org>
+random-verse: Website - https://www.inpito.org/projects.php

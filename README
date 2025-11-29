@@ -1,0 +1,18 @@
+random-verse ( Randon Bible Verse Generator )
+
+random-verse is a simple random bible verse generator that produces
+a single verse from the scriptures.
+
+Written By - Jerry Nettrouer II <j2@inpito.org>
+Website - https://www.inpito.org/projects.php
+
+If you would like to have a random Bible verse displayed each time
+you login or open a new bash terminal then add the following lines to your
+.bashrc file in your users home directories.
+
+# If the program random-verse is present within the system
+# display a random bible verse at bash initialization
+if [ -f /usr/bin/random-verse ]; then
+	echo -en "\033[01;20m`random-verse`\033[0m"
+	echo
+fi

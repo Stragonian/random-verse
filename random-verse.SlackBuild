@@ -1,0 +1,66 @@
+#!/bin/bash
+# random-verse.SlackBuild: build script for the random-verse program
+#
+# Copyright 2013 by Jerry Nettrouer II
+#
+# This file is part of the random-verse package.
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose and without fee is hereby granted, provided
+# that the above copyright notice and this permission notice appear
+# in all copies, and that the name of Jerry Nettrouer II not be used in
+# advertising or publicity pertaining to distribution of the document
+# or software without specific, written prior permission.
+#
+# Jerry Nettrouer II makes no representations about the suitability of the
+# software described herein for any purpose.  It is provided "as is"
+# without express or implied warranty.
+#
+# The author may be contacted via http://www.inpito.org/
+# Jerry Nettrouer <j2[at]inpito.org>
+#
+# This package is written for my Slackware Systems!
+
+PKGNAM="random-verse"
+VERSION=${VERSION:-0.0.1}
+BUILD=${BUILD:-inpito}
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-${PKGNAM}
+OUTPUT=$TMP
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i486 ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+# Open sourcecode
+cd $TMP
+rm -rf $PKG
+rm -rf ${PKGNAM}-${VERSION}
+tar xvf $CWD/$PKGNAM-$VERSION.tar.?z* || exit 1
+cd $PKGNAM-$VERSION
+
+SOURCE_DIR=$( pwd )
+
+env
+
+# Use the corn shared library to compile the program
+gcc -o $PKGNAM main.c -lcorn
+
+mkdir -p $PKG/usr/bin
+cp -a $SOURCE_DIR/$PKGNAM $PKG/usr/bin/$PKGNAM
+chmod +x $PKG/usr/bin/$PKGNAM
+
+# Load the slack-desc
+mkdir -p $PKG/install
+cp -a $CWD/slack-desc $PKG/install/
+
+# Time to build the package
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PKGNAM-$VERSION-$ARCH-$BUILD.${PKGTYPE:-tgz}
